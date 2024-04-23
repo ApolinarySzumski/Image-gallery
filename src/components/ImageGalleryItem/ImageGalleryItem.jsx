@@ -1,8 +1,9 @@
-import { nanoid } from 'nanoid';
-import css from './ImageGalleryItem.module.css';
+import { nanoid } from "nanoid";
+import PropTypes from "prop-types";
+import css from "./ImageGalleryItem.module.css";
 
 export const ImageGalleryItem = ({ dataFromApi }) => {
-  return dataFromApi.map(item => (
+  return dataFromApi.map((item) => (
     <li key={`${item.myId} + ${nanoid()}`} className={css.ImageGalleryItem}>
       <img
         className={css.ImageGalleryItemImage}
@@ -12,4 +13,8 @@ export const ImageGalleryItem = ({ dataFromApi }) => {
       />
     </li>
   ));
+};
+
+ImageGalleryItem.propTypes = {
+  dataFromApi: PropTypes.arrayOf(PropTypes.object),
 };

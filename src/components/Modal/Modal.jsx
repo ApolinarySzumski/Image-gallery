@@ -1,6 +1,7 @@
-import css from './Modal.module.css';
+import PropTypes from "prop-types";
+import css from "./Modal.module.css";
 
-export const Modal = ({ openModal, imageFromModal, closeModal }) => {
+export const Modal = ({ imageFromModal, closeModal }) => {
   return (
     <div className={css.Overlay} onClick={closeModal}>
       <div className={css.Modal}>
@@ -8,4 +9,9 @@ export const Modal = ({ openModal, imageFromModal, closeModal }) => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  imageFromModal: PropTypes.string,
+  closeModal: PropTypes.func,
 };
