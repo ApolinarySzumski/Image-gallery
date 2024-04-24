@@ -7,6 +7,7 @@ import { ImageGalleryItem } from "./components/ImageGalleryItem/ImageGalleryItem
 import { Loader } from "./components/Loader/Loader";
 import { Modal } from "./components/Modal/Modal";
 import { Searchbar } from "./components/Searchbar/Searchbar";
+import { useToggle } from "./hooks/useToggle";
 
 const App = () => {
   const [itemToSearch, setItemToSearch] = useState("");
@@ -15,8 +16,8 @@ const App = () => {
   const [dataFromApi, setdataFromApi] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageFromModal, setImageFromModal] = useState("");
+  const { isOpen, open, close } = useToggle();
 
   useEffect(() => {
     if (isLoading)
@@ -38,8 +39,7 @@ const App = () => {
           setIsLoading(false);
           setCurrentPage((prev) => prev + 1);
         });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  }, [currentPage, isLoading, itemToSearchLocked]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -72,20 +72,16 @@ const App = () => {
   };
 
   const openModal = (e) => {
-    if (e.target.nodeName === "IMG") setIsModalOpen(true);
+    if (e.target.nodeName === "IMG") open();
     setImageFromModal(e.target.getAttribute("src"));
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
   };
 
   return (
     <>
       <div className={css.App}>
         <Searchbar handleSubmit={handleSubmit} handleChange={handleChange} />
-        {isModalOpen ? (
-          <Modal imageFromModal={imageFromModal} closeModal={closeModal} />
+        {isOpen ? (
+          <Modal imageFromModal={imageFromModal} closeModal={close} />
         ) : (
           <></>
         )}
