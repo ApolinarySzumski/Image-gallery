@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import css from "./App.module.css";
-import { callToApi } from "./Functions/callToApi";
 import { Button } from "./components/Button/Button";
 import { ImageGallery } from "./components/ImageGallery/ImageGallery";
 import { ImageGalleryItem } from "./components/ImageGalleryItem/ImageGalleryItem";
 import { Loader } from "./components/Loader/Loader";
 import { Modal } from "./components/Modal/Modal";
 import { Searchbar } from "./components/Searchbar/Searchbar";
+import { callToApi } from "./functions/callToApi";
 import { useToggle } from "./hooks/useToggle";
 
 const App = () => {
@@ -17,6 +17,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [imageFromModal, setImageFromModal] = useState("");
+  const [error, setError] = useState(null);
   const { isOpen, open, close } = useToggle();
 
   useEffect(() => {
@@ -33,7 +34,7 @@ const App = () => {
           ]);
         })
         .catch((e) => {
-          console.log(e);
+          setError(e);
         })
         .finally(() => {
           setIsLoading(false);
@@ -80,6 +81,7 @@ const App = () => {
     <>
       <div className={css.App}>
         <Searchbar handleSubmit={handleSubmit} handleChange={handleChange} />
+        {error && <p>{error.message}</p>}
         {isOpen ? (
           <Modal imageFromModal={imageFromModal} closeModal={close} />
         ) : (
