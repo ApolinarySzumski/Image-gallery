@@ -1,8 +1,17 @@
-# React + Vite
+# Application view:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+https://apolinaryszumski.github.io/goit-react-hw-04-images/
 
-Currently, two official plugins are available:
+# To run application on localhost:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Using npm
+
+- npm run dev
+
+# An application description
+
+The application uses react and react-hooks.
+
+# Short summary
+
+The app allows you to search for images by typing the phrase you want to search for into the input. It then displays the images, which when pressed, we can enlarge by displaying them in a modal window. It is also possible to load additional images by pressing a button.
