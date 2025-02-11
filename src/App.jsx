@@ -6,7 +6,7 @@ import { ImageGalleryItem } from "./components/ImageGalleryItem/ImageGalleryItem
 import { Loader } from "./components/Loader/Loader";
 import { Modal } from "./components/Modal/Modal";
 import { Searchbar } from "./components/Searchbar/Searchbar";
-import callToApi from "./functions/callToApi";
+import callToApi from "./functions/callToApi.js";
 import { useToggle } from "./hooks/useToggle";
 
 const App = () => {
@@ -19,8 +19,6 @@ const App = () => {
   const [imageFromModal, setImageFromModal] = useState("");
   const [error, setError] = useState(null);
   const { isOpen, open, close } = useToggle();
-
-  console.log(itemToSearch);
 
   useEffect(() => {
     if (isLoading)
