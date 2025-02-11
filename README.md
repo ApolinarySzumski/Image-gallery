@@ -1,7 +1,3 @@
-# Application view:
-
-https://apolinaryszumski.github.io/goit-react-hw-04-images/
-
 # To run application on localhost:
 
 Using npm
