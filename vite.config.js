@@ -4,5 +4,5 @@ import { defineConfig } from "vite";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/goit-react-hw-04-images/",
+  base: "/image-gallery/",
 });
