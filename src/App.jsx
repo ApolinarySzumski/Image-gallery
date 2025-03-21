@@ -6,7 +6,7 @@ import { ImageGalleryItem } from "./components/ImageGalleryItem/ImageGalleryItem
 import { Loader } from "./components/Loader/Loader";
 import { Modal } from "./components/Modal/Modal";
 import { Searchbar } from "./components/Searchbar/Searchbar";
-import callToApi from "./functions/callToApi";
+import callToApi from "./Functions/callToApi";
 import { useToggle } from "./hooks/useToggle";
 
 const App = () => {
